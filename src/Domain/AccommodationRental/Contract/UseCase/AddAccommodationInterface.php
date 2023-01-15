@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace App\Domain\AccommodationRental\UseCase\Interface;
+namespace App\Domain\AccommodationRental\Contract\UseCase;
 
 use App\Domain\AccommodationRental\Entity\Accommodation;
 use App\Domain\AccommodationRental\UseCase\Input\AddAccommodationInput;

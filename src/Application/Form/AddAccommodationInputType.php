@@ -10,6 +10,7 @@ use App\Domain\Blog\ValueObject\AccommodationNature;
 use PHPUnit\Framework\Constraint\GreaterThan;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -28,9 +29,14 @@ class AddAccommodationInputType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('owner', EntityType::class, [
+                'label'       => 'Propriétaire',
+                'class'       => Owner::class,
+                'constraints' => [new NotNull()],
+            ])
             ->add('city', EntityType::class, [
-                'label'       => 'Nom du propriétaire',
-                'class' => City::class,
+                'label'       => 'Ville',
+                'class'       => City::class,
                 'constraints' => [new NotNull()],
             ])
             ->add('roomsNumber', IntegerType::class, [
@@ -46,6 +52,9 @@ class AddAccommodationInputType extends AbstractType
                     new LessThanOrEqual(7),
                     new GreaterThan(0),
                 ],
+            ])
+            ->add('availableAt', DateType::class, [
+                'label' => 'Date de disponibilité'
             ])
             ->add('nature', EnumType::class, [
                 'required' => true,

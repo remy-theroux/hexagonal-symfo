@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Domain\AccommodationRental\Entity;
 
-use App\Domain\Blog\ValueObject\AccommodationNature;
+use App\Domain\AccommodationRental\ValueObject\AccommodationNature;
 
 final class Accommodation
 {
@@ -26,7 +26,7 @@ final class Accommodation
 
     private Owner $owner;
 
-    public function __construct()
+    public function __construct($nature, $city, $owner, $roomsNumber, $bedroomsNumber, $availableAt)
     {
         $this->createdAt = new \DateTime();
     }

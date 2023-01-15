@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace App\Domain\Blog\ValueObject;
+namespace App\Domain\AccommodationRental\ValueObject;
 
 enum AccommodationNature: string
 {
